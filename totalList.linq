@@ -1,11 +1,11 @@
 <Query Kind="Program">
   <Connection>
-    <ID>fb508d83-0264-48d6-aa80-941aaf23905c</ID>
+    <ID>d5a1384a-8a73-4da7-bc68-0b08d0267ebd</ID>
     <Persist>true</Persist>
     <Server>103.206.122.225</Server>
     <SqlSecurity>true</SqlSecurity>
     <UserName>sa</UserName>
-    <Password>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALj8+qVC7/0yV1ne7tzVdLgAAAAACAAAAAAAQZgAAAAEAACAAAAAYhjriXFIiPLmrBVJX0ZMzY4mM2nOeC2rM5onmqnuL7wAAAAAOgAAAAAIAACAAAADLoz4Aj3SHz7e0p5lS5DBI1mxLoJ9Oxf9RweLcpxNMohAAAAAjdWyq3rwNvnhk2nZJLp8kQAAAALP/dQsfEo39Sj4JhluirBGEGxTXE7Bu4Nd05Ol8VmKasBG1eZxJRNCTLvG/OhBGBnzxMndQ/m8y6viM8+kP7g8=</Password>
+    <Password>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAg5UBSgkwRECQuGj5aN5HxgAAAAACAAAAAAAQZgAAAAEAACAAAAClDY41PSgMfZyzjKm3w9AZHvjS2Sh8Os8IFSaskwyzfgAAAAAOgAAAAAIAACAAAACCFEHXSweDlV5+4H3M9Gr4+4lOZLVwueEpPoYjMnD3YRAAAACmK0yTG+PZYTR9fjzYXBRDQAAAABsKd2sTdfQL0aI2vWutg5hbHYqawIXjem7MkEwNCSeLoXaxMvTLFxrocN7QqlSQU0txbS1Z8S4Pcwoi3fyhifw=</Password>
     <Database>nop</Database>
     <ShowServer>true</ShowServer>
   </Connection>
@@ -19,27 +19,7 @@
 
 void Main()
 {
-
-	var products = new List<SimpleProduct>()
-{
-	new SimpleProduct{
-		ProductName = "苹果",
-		 OldPrice = 10 ,
-		  StockQuantity = 100
-	},
-	new SimpleProduct{
-		ProductName = "香蕉",
-		 OldPrice =4,
-		  StockQuantity = 10
-	},
-	new SimpleProduct{
-		ProductName = "橘子",
-		 OldPrice = 6 ,
-		  StockQuantity = 0
-	},
-};
-
-
+	var products = DoGetSimpleProduct(); 
 	var totalResult = new List<SimpleProduct>();
 	int maxStockQuantity = 0;
 	int maxOldPrice = 5;
@@ -52,10 +32,31 @@ void Main()
 	}
 
 	totalResult.Dump($"库存量大于{maxStockQuantity}并且原价大于{maxOldPrice}是");
+}
 
 
+public List<SimpleProduct> DoGetSimpleProduct()
+{
 
-	this.Products.Where(c => c.StockQuantity > 0 && c.OldPrice > 10).Dump();
+	var lists = new List<SimpleProduct>(){
+		new SimpleProduct{
+			ProductName = "苹果",
+			 OldPrice = 10 ,
+			  StockQuantity = 100
+		},
+		new SimpleProduct{
+			ProductName = "香蕉",
+			 OldPrice =4,
+			  StockQuantity = 10
+		},
+		new SimpleProduct{
+			ProductName = "橘子",
+			 OldPrice = 6 ,
+			  StockQuantity = 0
+		},
+	};
+	
+	return lists;
 }
 
 
@@ -76,4 +77,3 @@ public class SimpleProduct
 	// 原价
 	public decimal OldPrice { get; set;}
 }
-

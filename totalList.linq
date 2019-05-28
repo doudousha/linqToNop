@@ -59,15 +59,6 @@ public List<SimpleProduct> DoGetSimpleProduct()
 	return lists;
 }
 
-
-
-
-
-
-
-
-
-
 public class SimpleProduct
 {
 
